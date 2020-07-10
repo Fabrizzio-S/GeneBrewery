@@ -2,12 +2,12 @@
 
 using CSharpFunctionalExtensions;
 
-namespace GeneBrewery.Business.Beer
+namespace GeneBrewery.Business.Beers
 {
     public class BeerName : ValueObject<BeerName>
     {
         public string Value { get; }
-
+        
         private BeerName(string beerName)
         {
             Value = beerName;

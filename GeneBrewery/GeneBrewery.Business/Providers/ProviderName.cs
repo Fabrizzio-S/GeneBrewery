@@ -2,7 +2,7 @@
 
 using CSharpFunctionalExtensions;
 
-namespace GeneBrewery.Business.Provider
+namespace GeneBrewery.Business.Providers
 {
     public class ProviderName : ValueObject<ProviderName>
     {
@@ -13,7 +13,7 @@ namespace GeneBrewery.Business.Provider
             Value = value;
         }
 
-        public Result<ProviderName> Create(string providerName)
+        public static Result<ProviderName> Create(string providerName)
         {
             providerName = providerName ?? string.Empty;
             if (providerName.Length == 0)

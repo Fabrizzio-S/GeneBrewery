@@ -1,8 +1,10 @@
 ﻿using GeneBrewery.Business.Common;
 
-namespace GeneBrewery.Business.Brewery
+using Microsoft.EntityFrameworkCore;
+
+namespace GeneBrewery.Business.Breweries
 {
-    public class BreweryRepository
+    public class BreweryRepository : IBreweryRepository
     {
         private readonly BreweryContext breweryContext;
 
@@ -20,8 +22,17 @@ namespace GeneBrewery.Business.Brewery
                 return null;
             }
 
-            breweryContext.Entry(brewery).Collection(x => x.Beers).Load();
+            breweryContext.Entry(brewery).Collection(x => x.Beers).Query()
+                .Include(x => x.BeerProviders)
+                .ThenInclude(x => x.Provider)
+                .Load();
             return brewery;
+        }
+
+        public bool Exists(long id)
+        {
+            Brewery brewery = breweryContext.Breweries.Find(id);
+            return brewery != null;
         }
     }
 }

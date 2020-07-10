@@ -2,11 +2,11 @@
 
 using FluentAssert;
 
-using GeneBrewery.Business.Beer;
+using GeneBrewery.Business.Beers;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GeneBrewery.Business.Test.Beer
+namespace GeneBrewery.Business.Test.Beers
 {
     [TestClass]
     public class BeerPriceTest

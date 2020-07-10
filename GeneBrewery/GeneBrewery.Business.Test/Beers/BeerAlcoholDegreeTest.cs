@@ -2,14 +2,14 @@
 
 using FluentAssert;
 
-using GeneBrewery.Business.Beer;
+using GeneBrewery.Business.Beers;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GeneBrewery.Business.Test.Beer
+namespace GeneBrewery.Business.Test.Beers
 {
     [TestClass]
-    public class BeerAlcoholDegreeTest
+    public class BeerProviderQuantityTest
     {
         [TestMethod]
         public void Create_beer_alcohol_degree_without_error()

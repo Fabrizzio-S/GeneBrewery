@@ -1,6 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
 
-namespace GeneBrewery.Business.Beer
+namespace GeneBrewery.Business.Beers
 {
     public class BeerPrice : ValueObject<BeerPrice>
     {

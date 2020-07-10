@@ -4,35 +4,35 @@ using System.Linq;
 
 using CSharpFunctionalExtensions;
 
-using GeneBrewery.Business.Beer;
+using GeneBrewery.Business.Beers;
 using GeneBrewery.Business.Common;
 
-namespace GeneBrewery.Business.Brewery
+namespace GeneBrewery.Business.Breweries
 {
     public class Brewery : Entity
     {
-        public BreweryName Name { get; }
-        private readonly List<Beer.Beer> beers = new List<Beer.Beer>();
-        public IReadOnlyList<Beer.Beer> Beers => beers.ToList();
+        public virtual BreweryName Name { get; }
+        private readonly List<Beer> beers;
+        public virtual IReadOnlyList<Beer> Beers => beers.ToList();
 
-        private Brewery()
+        protected Brewery()
         {
+            beers = new List<Beer>();
         }
 
         public Brewery(BreweryName breweryName) : this()
         {
             Name = breweryName ?? throw new ArgumentNullException(nameof(breweryName));
         }
-
+        
         public Result<Brewery> AddBeer(BeerName beerName, BeerPrice beerPrice, BeerAlcoholDegree beerAlcoholDegree)
         {
             if (beers.Any(x => x.Name == beerName))
             {
-                Result.Failure<Brewery>($"Beer {beerName.Value} with same name already exists in this brewery");
+                return Result.Failure<Brewery>($"Beer {beerName.Value} with same name already exists in this brewery");
             }
 
-            var beer = new Beer.Beer(beerName, beerPrice, beerAlcoholDegree);
-            beers.Add(beer);
+            beers.Add(new Beer(beerName, beerPrice, beerAlcoholDegree, this));
 
             return Result.Ok(this);
         }

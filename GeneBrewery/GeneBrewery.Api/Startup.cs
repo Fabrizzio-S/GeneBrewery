@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+using GeneBrewery.Business.BeerProviders;
+using GeneBrewery.Business.Beers;
+using GeneBrewery.Business.Breweries;
 using GeneBrewery.Business.Common;
+using GeneBrewery.Business.Providers;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+using Newtonsoft.Json;
 
 namespace GeneBrewery.Api
 {
@@ -27,7 +27,12 @@ namespace GeneBrewery.Api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped(_ => new BreweryContext(Configuration.GetConnectionString("GeneBreweryConnectionString")));
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            services.AddScoped(_ => new BreweryContext(Configuration.GetConnectionString("GeneBreweryConnectionString"), true));
+            services.AddTransient<IBreweryRepository, BreweryRepository>();
+            services.AddTransient<IProviderRepository, ProviderRepository>();
+            services.AddTransient<IBeerRepository, BeerRepository>();
+            services.AddTransient<IBeerProviderRepository, BeerProviderRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,10 +47,7 @@ namespace GeneBrewery.Api
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllers();
             });
         }
     }

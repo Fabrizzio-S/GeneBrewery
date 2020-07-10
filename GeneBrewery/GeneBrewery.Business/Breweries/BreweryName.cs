@@ -2,7 +2,7 @@
 
 using CSharpFunctionalExtensions;
 
-namespace GeneBrewery.Business.Brewery
+namespace GeneBrewery.Business.Breweries
 {
     public class BreweryName : ValueObject<BreweryName>
     {

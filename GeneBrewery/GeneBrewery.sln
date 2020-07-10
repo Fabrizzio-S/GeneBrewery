@@ -3,11 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneBrewery.Api", "GeneBrewery.Api\GeneBrewery.Api.csproj", "{D99E7484-12BA-4BF2-B742-103EDA27D1CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneBrewery.Api", "GeneBrewery.Api\GeneBrewery.Api.csproj", "{D99E7484-12BA-4BF2-B742-103EDA27D1CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneBrewery.Business", "GeneBrewery.Business\GeneBrewery.Business.csproj", "{BD0E0BDE-95F2-4C28-BAA3-DDD30B212AC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneBrewery.Business", "GeneBrewery.Business\GeneBrewery.Business.csproj", "{BD0E0BDE-95F2-4C28-BAA3-DDD30B212AC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneBrewery.Business.Test", "GeneBrewery.Business.Test\GeneBrewery.Business.Test.csproj", "{309C215F-B472-4DC1-B06D-ADFE13F8A05F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneBrewery.Business.Test", "GeneBrewery.Business.Test\GeneBrewery.Business.Test.csproj", "{309C215F-B472-4DC1-B06D-ADFE13F8A05F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{9F28308F-62F5-4D67-BDD3-C1BFCD320BD6}"
+	ProjectSection(SolutionItems) = preProject
+		1_Database_init.sql = 1_Database_init.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PostmanCollection", "PostmanCollection", "{DB623FB9-1D01-4DDA-9C6F-EEDFEE3F28D4}"
+	ProjectSection(SolutionItems) = preProject
+		GeneBreweryTest.postman_collection.json = GeneBreweryTest.postman_collection.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
